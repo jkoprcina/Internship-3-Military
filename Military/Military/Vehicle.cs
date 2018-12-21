@@ -7,6 +7,8 @@ namespace Military
 {
     public abstract class Vehicle
     {
+        public int FuelSpent;
+
         private int _Id;
         private int _Weight;
         private int _AverageSpeed;
@@ -19,13 +21,21 @@ namespace Military
         public int FuelConsumption { get => FuelConsumption; set => _FuelConsumption = value; }
         public int Capacity { get => Capacity; set => _Capacity = value; }
 
-        public Vehicle()
+        public Vehicle(int id, int weight, int averageSpeed)
         {
+            Id = id;
+            Weight = weight;
+            AverageSpeed = averageSpeed;
         }
 
-        public virtual void Output()
+        public virtual string Output()
         {
-
+            return $"Tank info: " +
+                   $"ID: {Id}" +
+                   $"Weight: {Weight}" +
+                   $"Average speed: {AverageSpeed}" +
+                   $"Fuel usage: {FuelConsumption}" +
+                   $"Capacity: {Capacity}";
         }
     }
 }
