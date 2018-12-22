@@ -6,12 +6,11 @@ namespace Military
 {
     public sealed class Tank : Vehicle, IDriveable
     {
-        Random rnd = new Random();
         public Tank(int id, int weight, int averageSpeed)
             : base(id, weight, averageSpeed)
         {
-            base.Capacity = 6;
-            base.FuelConsumption = 30;
+            Capacity = 6;
+            FuelConsumption = 30;
         }
 
         public override string Output()
@@ -43,8 +42,7 @@ namespace Military
             else
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
-            FuelSpent = ((newDistance * 0.01) * FuelConsumption);
-            Console.WriteLine(FuelSpent);
+            FuelSpent = newDistance * 0.01 * FuelConsumption;
         }
     }
 }

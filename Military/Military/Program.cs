@@ -82,6 +82,7 @@ namespace Military
                 }
             } while (success != true);
 
+            //inputing information
             tank.FuelNeeded(tankDistance, soldiers);
             warship.FuelNeeded(warshipDistance, soldiers);
             amfibia.FuelNeeded(amfibijLandDistance, amfibijWaterDistance, soldiers);
@@ -89,11 +90,13 @@ namespace Military
             Console.WriteLine(warship.Output());
             Console.WriteLine(amfibia.Output());
 
+            //outputing information
             var collection = new Dictionary<string, double>();
             collection.Add("tank", tank.FuelSpent);
             collection.Add("warship", warship.FuelSpent);
             collection.Add("amfibia", amfibia.FuelSpent);
 
+            //giving the user advice as to which vehicle to use 
             var minimum = collection.Values.Min();
             foreach (var v in collection)
             {

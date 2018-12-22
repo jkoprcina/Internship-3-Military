@@ -6,7 +6,6 @@ namespace Military
 {
     public sealed class Warship : Vehicle, ISwimable
     {
-        Random rnd = new Random();
         public Warship(int id, int weight, int averageSpeed)
             : base(id, weight, averageSpeed)
         {
@@ -29,7 +28,6 @@ namespace Military
                     distance += 3;
                     time += Calcuator.minutesTime(3, AverageSpeed);
                 }
-
                 time -= 10;
             }
             return distance;
@@ -44,7 +42,6 @@ namespace Military
             else
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
             FuelSpent = ((newDistance * 0.01) * FuelConsumption);
-            Console.WriteLine(FuelSpent);
         }
     }
 }

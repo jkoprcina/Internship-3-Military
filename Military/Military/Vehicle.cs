@@ -7,6 +7,7 @@ namespace Military
 {
     public abstract class Vehicle
     {
+        protected Random rnd = new Random();
         public int Id { get; set; }
         public int Weight { get; set; }
         public int AverageSpeed { get; set; }
