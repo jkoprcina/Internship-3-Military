@@ -89,18 +89,17 @@ namespace Military
             Console.WriteLine(warship.Output());
             Console.WriteLine(amfibia.Output());
 
-            var collection = new Dictionary<int, string>();
-            collection.Add(tank.FuelSpent, "tank");
-            collection.Add(warship.FuelSpent, "warship");
-            collection.Add(amfibia.FuelSpent, "amfibia");
+            var collection = new Dictionary<string, double>();
+            collection.Add("tank", tank.FuelSpent);
+            collection.Add("warship", warship.FuelSpent);
+            collection.Add("amfibia", amfibia.FuelSpent);
 
-            var minimum = collection.Keys.Min();
+            var minimum = collection.Values.Min();
             foreach (var v in collection)
             {
-                if(v.Key == minimum)
-                    Console.WriteLine($"I advise you to pick {v.Value} because it spends the least fuel for the trip at {v.Key} L\n");
+                if(v.Value == minimum)
+                    Console.WriteLine($"I advise you to pick {v.Key} because it spends the least fuel for the trip at {v.Value} L\n");
             }
-
         }
     }
 }

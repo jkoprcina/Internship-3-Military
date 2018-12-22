@@ -43,7 +43,7 @@ namespace Military
                 newDistance *= (((people / Capacity) * 2) - 1);
             else
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
-            FuelSpent = ((newDistance / 100) * FuelConsumption);
+            FuelSpent = ((newDistance * 0.01) * FuelConsumption);
             Console.WriteLine(FuelSpent);
         }
     }

@@ -12,7 +12,7 @@ namespace Military
         public int AverageSpeed { get; set; }
         public int FuelConsumption { get; set; }
         public int Capacity { get; set; }
-        public int FuelSpent { get; set; }
+        public double FuelSpent { get; set; }
 
         public Vehicle(int id, int weight, int averageSpeed)
         {
@@ -23,12 +23,7 @@ namespace Military
 
         public virtual string Output()
         {
-            return $"Tank info: " +
-                   $"ID: {Id}, " +
-                   $"Weight: {Weight}, " +
-                   $"Average speed: {AverageSpeed}, " +
-                   $"Fuel usage: {FuelConsumption}, " +
-                   $"Capacity: {Capacity}, ";
+            return $"Tank info: ID: {Id}, Weight: {Weight}, Average speed: {AverageSpeed}, Fuel usage: {FuelConsumption}, Capacity: {Capacity}, ";
         }
     }
 }
