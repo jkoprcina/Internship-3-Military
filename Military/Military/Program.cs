@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Military
 {
@@ -49,7 +51,7 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
-                if (amfibijLandDistance > tankDistance - 1 || amfibijLandDistance > warshipDistance - 1)
+                if (amfibijLandDistance >= tankDistance - 1 || amfibijLandDistance >= warshipDistance - 1)
                 {
                     success = false;
                     Console.WriteLine("Amfibij needs to have the shortest trip"); 
@@ -64,7 +66,7 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
-                if (amfibijWaterDistance + amfibijLandDistance > tankDistance || amfibijWaterDistance + amfibijLandDistance > warshipDistance)
+                if (amfibijWaterDistance + amfibijLandDistance >= tankDistance || amfibijWaterDistance + amfibijLandDistance >= warshipDistance)
                 {
                     success = false;
                     Console.WriteLine("Amfibij needs to have the shortest trip");
@@ -87,6 +89,17 @@ namespace Military
             Console.WriteLine(warship.Output());
             Console.WriteLine(amfibia.Output());
 
+            var collection = new Dictionary<int, string>();
+            collection.Add(tank.FuelSpent, "tank");
+            collection.Add(warship.FuelSpent, "warship");
+            collection.Add(amfibia.FuelSpent, "amfibia");
+
+            var minimum = collection.Keys.Min();
+            foreach (var v in collection)
+            {
+                if(v.Key == minimum)
+                    Console.WriteLine($"I advise you to pick {v.Value} because it spends the least fuel for the trip at {v.Key} L\n");
+            }
 
         }
     }

@@ -11,5 +11,6 @@ namespace Military
         {
             return (distance / speed)*60;
         }
+        
     }
 }
