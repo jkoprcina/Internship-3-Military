@@ -18,7 +18,8 @@ namespace Military
             var soldiers = 0;
 
             //asking the user to input some information that we need
-            Console.WriteLine("Enter the minimum required distance, in km, that the three vehicle types need to pass to get from point A to point B");
+            Console.Write("Enter the minimum required distance, in km, that the three vehicle types\n" +
+                          "need to pass to get from point A to point B\n");
             do
             {
                 Console.WriteLine("Enter the distance a tank needs to pass");
@@ -41,7 +42,7 @@ namespace Military
 
             do
             {
-                Console.WriteLine("Enter the distance a amfibij needs to pass by land");
+                Console.WriteLine("Enter the distance a amfibia needs to pass by land");
                 success = int.TryParse(Console.ReadLine(), out amfibijLandDistance);
                 if (success == false)
                 {
@@ -51,7 +52,7 @@ namespace Military
 
             do
             {
-                Console.WriteLine("Enter the distance a tank needs to pass by water");
+                Console.WriteLine("Enter the distance a amfibia needs to pass by water");
                 success = int.TryParse(Console.ReadLine(), out amfibijWaterDistance);
                 if (success == false)
                 {
@@ -69,6 +70,7 @@ namespace Military
             } while (success != true);
 
             tank.FuelNeeded(tankDistance, soldiers);
+            Console.WriteLine("Nesto");
             warship.FuelNeeded(warshipDistance, soldiers);
             amfibia.FuelNeeded(amfibijLandDistance, amfibijWaterDistance, soldiers);
 

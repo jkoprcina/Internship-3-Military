@@ -16,13 +16,15 @@ namespace Military
 
         public int Move(int distance)
         {
-            var possibleAccidents = distance / 10;
-            for (int i = 0; i < possibleAccidents; i++)
+            var newDistance = distance;
+            while (newDistance - 10 > 0)
             {
                 if (rnd.Next(10) < 3)
                 {
                     distance += 5;
+                    newDistance += 5;
                 }
+                newDistance -= 10;
             }
             return distance;
         }
@@ -30,31 +32,27 @@ namespace Military
         public int Swim(int distance)
         {
             var time = Calcuator.minutesTime(distance, AverageSpeed);
-            var possibleAccidents = time / 10;
-
-            for (int i = 0; i < possibleAccidents; i++)
+            while (time - 10 > 0)
             {
                 if (rnd.Next(10) < 5)
                 {
                     distance += 3;
+                    time += Calcuator.minutesTime(3, AverageSpeed);
                 }
             }
             return distance;
         }
 
-        public void FuelNeeded(int distanceLand, int distanceWater, int people)
+        public void FuelNeeded(int distanceLand, int distanceSea, int people)
         {
-            var distance = Move(distanceLand) + Swim(distanceWater);
-            var newDistance = 0;
+            var newDistance = Move(distanceLand) + Swim(distanceSea);
 
             if (people % Capacity == 0)
-                newDistance *= ((people / Capacity) * 2);
+                newDistance *= (((people / Capacity) * 2) - 1);
             else
-                newDistance *= (((people / Capacity) + 1) * 2);
+                newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
-            newDistance -= distance;
-
-            FuelSpent = newDistance * FuelConsumption;
+            FuelSpent = ((newDistance / 100) * FuelConsumption);
         }
     }
 }

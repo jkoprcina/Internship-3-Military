@@ -17,13 +17,12 @@ namespace Military
         public int Swim(int distance)
         {
             var time = Calcuator.minutesTime(distance, AverageSpeed);
-            var possibleAccidents = time / 10;
-
-            for (int i = 0; i < possibleAccidents; i++)
+            while (time - 10 > 0)
             {
                 if (rnd.Next(10) < 5)
                 {
                     distance += 3;
+                    time += Calcuator.minutesTime(3, AverageSpeed);
                 }
             }
             return distance;
@@ -31,17 +30,14 @@ namespace Military
 
         public void FuelNeeded(int distance, int people)
         {
-            distance = Swim(distance);
-            var newDistance = 0;
+            var newDistance = Swim(distance);
 
             if (people % Capacity == 0)
-                newDistance *= ((people / Capacity) * 2);
+                newDistance *= (((people / Capacity) * 2) - 1);
             else
-                newDistance *= (((people / Capacity) + 1) * 2);
+                newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
-            newDistance -= distance;
-
-            FuelSpent = newDistance * FuelConsumption;
+            FuelSpent = ((newDistance / 100) * FuelConsumption);
         }
     }
 }

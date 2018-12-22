@@ -10,8 +10,8 @@ namespace Military
         public Tank(int id, int weight, int averageSpeed)
             : base(id, weight, averageSpeed)
         {
-            Capacity = 6;
-            FuelConsumption = 30;
+            base.Capacity = 6;
+            base.FuelConsumption = 30;
         }
 
         public override string Output()
@@ -21,30 +21,29 @@ namespace Military
 
         public int Move(int distance)
         {
-            var possibleAccidents = distance / 10;
-            for (int i = 0; i < possibleAccidents; i++)
+            var newDistance = distance;
+            while (newDistance - 10 > 0)
             {
                 if (rnd.Next(10) < 3)
                 {
                     distance += 5;
+                    newDistance += 5;
                 }
+                newDistance -= 10;
             }
             return distance;
         }
 
         public void FuelNeeded(int distance, int people)
         {
-            distance = Move(distance);
-            var newDistance = 0;
+            var newDistance = Move(distance);
 
             if (people % Capacity == 0)
-                newDistance *= ((people / Capacity) * 2);
+                newDistance *= (((people / Capacity) * 2) - 1);
             else
-                newDistance *= (((people / Capacity) + 1) * 2);
+                newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
-            newDistance -= distance;
-
-            FuelSpent = newDistance * FuelConsumption;
+            FuelSpent = ((newDistance / 100) * FuelConsumption);
         }
     }
 }
