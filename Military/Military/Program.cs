@@ -31,7 +31,7 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
-            } while (success != true);
+            } while (success != true || tankDistance < 1);
 
             do
             {
@@ -41,7 +41,7 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
-            } while (success != true);
+            } while (success != true || warshipDistance < 1);
 
             do
             {
@@ -56,7 +56,7 @@ namespace Military
                     success = false;
                     Console.WriteLine("Amfibij needs to have the shortest trip"); 
                 }
-            } while (success != true);
+            } while (success != true || amfibijLandDistance < 0);
 
             do
             {
@@ -71,7 +71,7 @@ namespace Military
                     success = false;
                     Console.WriteLine("Amfibij needs to have the shortest trip");
                 }
-            } while (success != true);
+            } while (success != true || amfibijWaterDistance < 0);
             do
             {
                 Console.WriteLine("Enter the number of soldiers that need to be transported");
@@ -80,7 +80,7 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
-            } while (success != true);
+            } while (success != true || soldiers < 1);
 
             //inputing information
             tank.FuelNeeded(tankDistance, soldiers);
