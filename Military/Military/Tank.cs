@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Military
 {
-    public sealed class Tank : Vehicle
+    public sealed class Tank : Vehicle, IDriveable
     {
         Random rnd = new Random();
         public Tank(int id, int weight, int averageSpeed)
@@ -44,6 +44,7 @@ namespace Military
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
             FuelSpent = ((newDistance / 100) * FuelConsumption);
+            Console.WriteLine(FuelSpent);
         }
     }
 }

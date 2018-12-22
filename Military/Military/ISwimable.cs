@@ -6,6 +6,6 @@ namespace Military
 {
     public interface ISwimable
     {
-        int Swim();
+        int Swim(int number);
     }
 }

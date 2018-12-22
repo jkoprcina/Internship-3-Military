@@ -7,19 +7,12 @@ namespace Military
 {
     public abstract class Vehicle
     {
-        public int FuelSpent;
-
-        private int _Id;
-        private int _Weight;
-        private int _AverageSpeed;
-        private int _FuelConsumption;
-        private int _Capacity;
-
-        public int Id { get => Id; set => _Id = value; }
-        public int Weight { get => Weight; set => _Weight = value; }
-        public int AverageSpeed { get => AverageSpeed; set => _AverageSpeed = value; }
-        public int FuelConsumption { get => FuelConsumption; set => _FuelConsumption = value; }
-        public int Capacity { get => Capacity; set => _Capacity = value; }
+        public int Id { get; set; }
+        public int Weight { get; set; }
+        public int AverageSpeed { get; set; }
+        public int FuelConsumption { get; set; }
+        public int Capacity { get; set; }
+        public int FuelSpent { get; set; }
 
         public Vehicle(int id, int weight, int averageSpeed)
         {
@@ -31,11 +24,11 @@ namespace Military
         public virtual string Output()
         {
             return $"Tank info: " +
-                   $"ID: {Id}" +
-                   $"Weight: {Weight}" +
-                   $"Average speed: {AverageSpeed}" +
-                   $"Fuel usage: {FuelConsumption}" +
-                   $"Capacity: {Capacity}";
+                   $"ID: {Id}, " +
+                   $"Weight: {Weight}, " +
+                   $"Average speed: {AverageSpeed}, " +
+                   $"Fuel usage: {FuelConsumption}, " +
+                   $"Capacity: {Capacity}, ";
         }
     }
 }

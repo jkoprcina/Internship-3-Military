@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Military
 {
-    public sealed class Amfibia : Vehicle
+    public sealed class Amfibia : Vehicle, IDriveable, ISwimable
     {
         Random rnd = new Random();
         public Amfibia(int id, int weight, int averageSpeed)
@@ -12,6 +12,11 @@ namespace Military
         {
             Capacity = 20;
             FuelConsumption = 70;
+        }
+
+        public override string Output()
+        {
+            return base.Output() + $"Fuel spent {FuelSpent}";
         }
 
         public int Move(int distance)
@@ -39,6 +44,8 @@ namespace Military
                     distance += 3;
                     time += Calcuator.minutesTime(3, AverageSpeed);
                 }
+
+                time -= 10;
             }
             return distance;
         }
@@ -53,6 +60,7 @@ namespace Military
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
 
             FuelSpent = ((newDistance / 100) * FuelConsumption);
+            Console.WriteLine(FuelSpent);
         }
     }
 }

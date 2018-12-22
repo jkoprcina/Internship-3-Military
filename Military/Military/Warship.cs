@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Military
 {
-    public sealed class Warship : Vehicle
+    public sealed class Warship : Vehicle, ISwimable
     {
         Random rnd = new Random();
         public Warship(int id, int weight, int averageSpeed)
@@ -12,6 +12,11 @@ namespace Military
         {
             Capacity = 50;
             FuelConsumption = 200;
+        }
+
+        public override string Output()
+        {
+            return base.Output() + $"Fuel spent {FuelSpent}";
         }
 
         public int Swim(int distance)
@@ -24,6 +29,8 @@ namespace Military
                     distance += 3;
                     time += Calcuator.minutesTime(3, AverageSpeed);
                 }
+
+                time -= 10;
             }
             return distance;
         }
@@ -31,13 +38,13 @@ namespace Military
         public void FuelNeeded(int distance, int people)
         {
             var newDistance = Swim(distance);
-
+            
             if (people % Capacity == 0)
                 newDistance *= (((people / Capacity) * 2) - 1);
             else
                 newDistance *= ((((people / Capacity) + 1) * 2) - 1);
-
             FuelSpent = ((newDistance / 100) * FuelConsumption);
+            Console.WriteLine(FuelSpent);
         }
     }
 }

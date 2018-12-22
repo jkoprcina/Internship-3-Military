@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Military
 {
@@ -48,6 +49,11 @@ namespace Military
                 {
                     Console.WriteLine("Wrong input, try again");
                 }
+                if (amfibijLandDistance > tankDistance - 1 || amfibijLandDistance > warshipDistance - 1)
+                {
+                    success = false;
+                    Console.WriteLine("Amfibij needs to have the shortest trip"); 
+                }
             } while (success != true);
 
             do
@@ -57,6 +63,11 @@ namespace Military
                 if (success == false)
                 {
                     Console.WriteLine("Wrong input, try again");
+                }
+                if (amfibijWaterDistance + amfibijLandDistance > tankDistance || amfibijWaterDistance + amfibijLandDistance > warshipDistance)
+                {
+                    success = false;
+                    Console.WriteLine("Amfibij needs to have the shortest trip");
                 }
             } while (success != true);
             do
@@ -70,13 +81,13 @@ namespace Military
             } while (success != true);
 
             tank.FuelNeeded(tankDistance, soldiers);
-            Console.WriteLine("Nesto");
             warship.FuelNeeded(warshipDistance, soldiers);
             amfibia.FuelNeeded(amfibijLandDistance, amfibijWaterDistance, soldiers);
+            Console.WriteLine(tank.Output());
+            Console.WriteLine(warship.Output());
+            Console.WriteLine(amfibia.Output());
 
-            tank.Output();
-            warship.Output();
-            amfibia.Output();
+
         }
     }
 }
